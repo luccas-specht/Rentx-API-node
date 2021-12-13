@@ -1,11 +1,13 @@
 import express from 'express'
 
+import { categoriesRoutes } from './routers/categorites.routes'
+
 const app = express()
 
 app.listen(3333, () => {
-  console.log('Server startes in port: 3333🚀')
+  console.log('Server startes in port: 3333 🚀')
 })
 
-app.get('/', (request, response) => {
-  response.json({ message: 'Hello world' })
-})
+app.use(express.json())
+
+app.use('/categories', categoriesRoutes)
