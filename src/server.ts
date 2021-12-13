@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { categoriesRoutes } from './routers/categorites.routes'
+import { categoriesRoutes } from './routers/categories.routes'
 
 const app = express()
 
