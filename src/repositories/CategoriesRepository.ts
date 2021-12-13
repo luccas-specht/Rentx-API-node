@@ -1,19 +1,11 @@
 import { Category } from '../models'
+import {
+  ICreateCategoryDTO,
+  ICategoriesRepositoy,
+} from './ICategoriesRepository'
 
-// DTO -> Data trasnfer Object
-// Conceito de criar um obj que é responsavel por fazer a transferencia de dados entre uma camada e outra
-
-interface ICreateCategoryDTO {
-  name: string
-  description: string
-}
-
-export class CategoriesRepository {
-  private categories: Category[]
-
-  constructor() {
-    this.categories = []
-  }
+export class CategoriesRepository implements ICategoriesRepositoy {
+  constructor(private categories: Category[] = []) {}
 
   create({ name, description }: ICreateCategoryDTO): void {
     const category = new Category()
