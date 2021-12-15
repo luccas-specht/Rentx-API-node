@@ -4,8 +4,22 @@ import {
   ICategoriesRepositoy,
 } from './ICategoriesRepository'
 
+// singleton -> esse padrão de projeto tem como definição criar apenas uma instancia de uma classe(um obj) que vai ser uma instancia global
 export class CategoriesRepository implements ICategoriesRepositoy {
-  constructor(private categories: Category[] = []) {}
+  private categories: Category[]
+
+  private static INSTANCE: CategoriesRepository
+
+  private constructor() {
+    this.categories = []
+  }
+
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE) {
+      CategoriesRepository.INSTANCE = new CategoriesRepository()
+    }
+    return CategoriesRepository.INSTANCE
+  }
 
   create({ name, description }: ICreateCategoryDTO): void {
     const category = new Category()
