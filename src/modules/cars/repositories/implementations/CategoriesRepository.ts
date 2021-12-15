@@ -1,8 +1,5 @@
-import { Category } from '../models'
-import {
-  ICreateCategoryDTO,
-  ICategoriesRepositoy,
-} from './ICategoriesRepository'
+import { Category } from '../../models'
+import { ICreateCategoryDTO, ICategoriesRepositoy } from '../interfaces'
 
 // singleton -> esse padrão de projeto tem como definição criar apenas uma instancia de uma classe(um obj) que vai ser uma instancia global
 export class CategoriesRepository implements ICategoriesRepositoy {

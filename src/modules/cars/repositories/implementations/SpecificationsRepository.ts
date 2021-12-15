@@ -1,12 +1,11 @@
-import { ISpecificationRepository, ICreateSpecificationDTO } from '.'
-import { Specification } from '../models'
+import { Specification } from '../../models'
+import { ISpecificationRepository, ICreateSpecificationDTO } from '../'
 
 export class SpecificationRepository implements ISpecificationRepository {
   constructor(private specifications: Specification[] = []) {}
 
   create({ name, description }: ICreateSpecificationDTO): void {
     const specification = new Specification()
-
     // pega todas as informações que foram passadas para dentro dele e vai setar para dentro do obj **specification**
     Object.assign(specification, {
       name,
