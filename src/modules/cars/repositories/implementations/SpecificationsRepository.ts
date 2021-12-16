@@ -1,17 +1,17 @@
+import { ISpecificationRepository, ICreateSpecificationDTO } from '..'
+
 import { Specification } from '../../models'
-import { ISpecificationRepository, ICreateSpecificationDTO } from '../'
 
 export class SpecificationRepository implements ISpecificationRepository {
   private static INSTANCE: SpecificationRepository
 
-  private constructor(private specifications: Specification[] = []) {}
+  private constructor(private specifications: Specification[] = []) { } // eslint-disable-line
 
   public static getInstance(): SpecificationRepository {
     if (!SpecificationRepository.INSTANCE) {
       SpecificationRepository.INSTANCE = new SpecificationRepository()
     }
     return SpecificationRepository.INSTANCE
-  
   }
 
   list(): Specification[] {

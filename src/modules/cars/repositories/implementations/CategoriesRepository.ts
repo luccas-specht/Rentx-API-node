@@ -3,13 +3,9 @@ import { ICreateCategoryDTO, ICategoriesRepositoy } from '../interfaces'
 
 // singleton -> esse padrão de projeto tem como definição criar apenas uma instancia de uma classe(um obj) que vai ser uma instancia global
 export class CategoriesRepository implements ICategoriesRepositoy {
-  private categories: Category[]
-
   private static INSTANCE: CategoriesRepository
 
-  private constructor() {
-    this.categories = []
-  }
+  private constructor(private categories: Category[] = []) { }  // eslint-disable-line
 
   public static getInstance(): CategoriesRepository {
     if (!CategoriesRepository.INSTANCE) {
