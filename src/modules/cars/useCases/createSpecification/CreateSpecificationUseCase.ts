@@ -1,18 +1,18 @@
-import { ISpecificationRepository } from '../repositories'
+import { ISpecificationRepository } from '../../repositories'
 
 interface IRequest {
   name: string
   description: string
 }
 
-export class CreateSpecificationService {
+export class CreateSpecificationUseCase {
   constructor(private specificationRepository: ISpecificationRepository) {}
 
   execute({ name, description }: IRequest): void {
-    const specificationNameAlreadyWasUsed =
+    const specificationNameAlreadyExists =
       this.specificationRepository.checkIfSpecificationNameIsUnique(name)
 
-    if (specificationNameAlreadyWasUsed)
+    if (specificationNameAlreadyExists)
       throw new Error('Specification Already exists!')
 
     this.specificationRepository.create({ name, description })
