@@ -1,27 +1,28 @@
-import { Router } from 'express'
+import { Router, Request, Response } from 'express'
+import multer from 'multer'
 
-import { CategoriesRepository } from '../repositories'
-import { CreateCategoryService, ListCategoriesServices } from '../services'
+import { createCategoryController } from '../modules/cars/useCases/createCategory'
+import { importCategoryController } from '../modules/cars/useCases/importCategory'
+import { listCategoriesController } from '../modules/cars/useCases/listCategories'
 
 export const categoriesRoutes = Router()
 
-const categoriesRepository = new CategoriesRepository()
-
-categoriesRoutes.post('/', (request, response) => {
-  const {
-    body: { name, description },
-  } = request
-
-  const createCategoryService = new CreateCategoryService(categoriesRepository)
-  createCategoryService.execute({ name, description })
-
-  // sempre que eniviarmos um status sem um .json() devemos chamar o metodo .send() para enviar essa resposta com o status escolhido.
-  return response.status(201).send()
+/* link dock:  https://www.npmjs.com/package/multer */
+const upload = multer({
+  dest: './tmp',
 })
 
-categoriesRoutes.get('/', (request, response) => {
-  const listCategoriesService = new ListCategoriesServices(categoriesRepository)
-  const categories = listCategoriesService.execute()
+categoriesRoutes.post('/', (request: Request, response: Response) =>
+  createCategoryController.handle(request, response)
+)
 
-  return response.json(categories)
-})
+categoriesRoutes.post(
+  '/import',
+  upload.single('file'),
+  (request: Request, response: Response) =>
+    importCategoryController.handle(request, response)
+)
+
+categoriesRoutes.get('/', (request: Request, response: Response) =>
+  listCategoriesController.handle(request, response)
+)

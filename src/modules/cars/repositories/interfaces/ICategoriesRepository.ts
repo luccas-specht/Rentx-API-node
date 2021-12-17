@@ -1,4 +1,4 @@
-import { Category } from '../models'
+import { Category } from '../../models'
 
 // DTO -> Data trasnfer Object
 // Conceito de criar um obj que é responsavel por fazer a transferencia de dados entre uma camada e outra

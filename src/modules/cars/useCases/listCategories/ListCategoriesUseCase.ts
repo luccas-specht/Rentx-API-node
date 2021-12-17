@@ -1,7 +1,7 @@
-import { Category } from '../models'
-import { ICategoriesRepositoy } from '../repositories'
+import { Category } from '../../models'
+import { ICategoriesRepositoy } from '../../repositories'
 
-export class ListCategoriesServices {
+export class ListCategoriesUseCase {
   constructor(private categoriesRepository: ICategoriesRepositoy) {}
 
   execute(): Category[] {
