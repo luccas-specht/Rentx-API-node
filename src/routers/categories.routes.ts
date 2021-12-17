@@ -7,7 +7,6 @@ import { listCategoriesController } from '../modules/cars/useCases/listCategorie
 
 export const categoriesRoutes = Router()
 
-/* link dock:  https://www.npmjs.com/package/multer */
 const upload = multer({
   dest: './tmp',
 })
