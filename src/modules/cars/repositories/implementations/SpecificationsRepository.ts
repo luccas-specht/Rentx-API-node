@@ -5,7 +5,7 @@ import { Specification } from '../../models'
 export class SpecificationRepository implements ISpecificationRepository {
   private static INSTANCE: SpecificationRepository
 
-  private constructor(private specifications: Specification[] = []) { } // eslint-disable-line
+  private constructor(private specifications: Specification[] = []) {}
 
   public static getInstance(): SpecificationRepository {
     if (!SpecificationRepository.INSTANCE) {

@@ -5,7 +5,7 @@ import { ICreateCategoryDTO, ICategoriesRepositoy } from '../interfaces'
 export class CategoriesRepository implements ICategoriesRepositoy {
   private static INSTANCE: CategoriesRepository
 
-  private constructor(private categories: Category[] = []) { }  // eslint-disable-line
+  private constructor(private categories: Category[] = []) {}
 
   public static getInstance(): CategoriesRepository {
     if (!CategoriesRepository.INSTANCE) {
@@ -31,11 +31,11 @@ export class CategoriesRepository implements ICategoriesRepositoy {
   }
 
   checkIfCategoryNameIsUnique(name: string): boolean {
-    const isThereCategory = this.categories.some(
+    const categoryNameAlreadyExists = this.categories.some(
       (category) =>
         category.name.trim().toUpperCase() === name.trim().toUpperCase()
     )
 
-    return isThereCategory
+    return categoryNameAlreadyExists
   }
 }
