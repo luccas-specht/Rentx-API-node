@@ -1,41 +1,31 @@
-import { Category } from '../../models'
+import { getRepository, Repository } from 'typeorm'
+
+import { Category } from '../../entities'
 import { ICreateCategoryDTO, ICategoriesRepositoy } from '../interfaces'
 
-// singleton -> esse padrão de projeto tem como definição criar apenas uma instancia de uma classe(um obj) que vai ser uma instancia global
 export class CategoriesRepository implements ICategoriesRepositoy {
-  private static INSTANCE: CategoriesRepository
+  constructor(
+    private repository: Repository<Category> = getRepository(Category)
+  ) {}
 
-  private constructor(private categories: Category[] = []) {}
-
-  public static getInstance(): CategoriesRepository {
-    if (!CategoriesRepository.INSTANCE) {
-      CategoriesRepository.INSTANCE = new CategoriesRepository()
-    }
-    return CategoriesRepository.INSTANCE
-  }
-
-  create({ name, description }: ICreateCategoryDTO): void {
-    const category = new Category()
-
-    Object.assign(category, {
+  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
+    const category = this.repository.create({
       name,
       description,
-      created_at: new Date(),
     })
-
-    this.categories.push(category)
+    await this.repository.save(category)
   }
 
-  list(): Category[] {
-    return this.categories
+  async list(): Promise<Category[]> {
+    // quando a promise é direta no  return **NÃO PRECISA DE  AWAIT**. ESLint error: Redundant use of `await` on a return value.eslint
+    const list = await this.repository.find()
+    return list
   }
 
-  checkIfCategoryNameIsUnique(name: string): boolean {
-    const categoryNameAlreadyExists = this.categories.some(
-      (category) =>
-        category.name.trim().toUpperCase() === name.trim().toUpperCase()
-    )
+  async checkIfCategoryNameIsUnique(name: string): Promise<boolean> {
+    // select * from categories where name = "name" limit 1
+    const categoryNameAlreadyExists = await this.repository.findOne({ name })
 
-    return categoryNameAlreadyExists
+    return !!categoryNameAlreadyExists
   }
 }

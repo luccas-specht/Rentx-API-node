@@ -1,6 +1,6 @@
 import { ISpecificationRepository, ICreateSpecificationDTO } from '..'
 
-import { Specification } from '../../models'
+import { Specification } from '../../entities'
 
 export class SpecificationRepository implements ISpecificationRepository {
   private static INSTANCE: SpecificationRepository
