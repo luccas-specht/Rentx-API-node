@@ -1,4 +1,4 @@
-import { Category } from '../../models'
+import { Category } from '../../entities'
 
 // DTO -> Data trasnfer Object
 // Conceito de criar um obj que é responsavel por fazer a transferencia de dados entre uma camada e outra
@@ -8,7 +8,7 @@ export interface ICreateCategoryDTO {
 }
 
 export interface ICategoriesRepositoy {
-  list(): Category[]
-  create(data: ICreateCategoryDTO): void
-  checkIfCategoryNameIsUnique(name: string): boolean
+  list(): Promise<Category[]>
+  create(data: ICreateCategoryDTO): Promise<void>
+  checkIfCategoryNameIsUnique(name: string): Promise<boolean>
 }
