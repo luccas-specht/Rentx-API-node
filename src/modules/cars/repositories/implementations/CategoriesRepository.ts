@@ -25,7 +25,6 @@ export class CategoriesRepository implements ICategoriesRepositoy {
   async checkIfCategoryNameIsUnique(name: string): Promise<boolean> {
     // select * from categories where name = "name" limit 1
     const categoryNameAlreadyExists = await this.repository.findOne({ name })
-
     return !!categoryNameAlreadyExists
   }
 }
