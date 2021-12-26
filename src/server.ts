@@ -2,6 +2,7 @@ import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 
 import './database'
+import './shared/container'
 import { routers } from './routers'
 import swaggerFile from './swagger.json'
 
