@@ -1,7 +1,8 @@
 import { getRepository, Repository } from 'typeorm'
 
 import { Category } from '../../entities'
-import { ICreateCategoryDTO, ICategoriesRepositoy } from '../interfaces'
+
+import { ICreateCategoryDTO, ICategoriesRepositoy } from '..'
 
 export class CategoriesRepository implements ICategoriesRepositoy {
   constructor(
@@ -17,13 +18,10 @@ export class CategoriesRepository implements ICategoriesRepositoy {
   }
 
   async list(): Promise<Category[]> {
-    // quando a promise é direta no  return **NÃO PRECISA DE  AWAIT**. ESLint error: Redundant use of `await` on a return value.eslint
-    const list = await this.repository.find()
-    return list
+    return this.repository.find()
   }
 
   async checkIfCategoryNameIsUnique(name: string): Promise<boolean> {
-    // select * from categories where name = "name" limit 1
     const categoryNameAlreadyExists = await this.repository.findOne({ name })
     return !!categoryNameAlreadyExists
   }

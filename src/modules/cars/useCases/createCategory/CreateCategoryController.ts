@@ -10,7 +10,6 @@ export class CreateCategoryController {
     } = request
 
     const createCategoryUseCase = container.resolve(CreateCategoryUseCase)
-
     await createCategoryUseCase.execute({ name, description })
 
     return response.status(201).send()

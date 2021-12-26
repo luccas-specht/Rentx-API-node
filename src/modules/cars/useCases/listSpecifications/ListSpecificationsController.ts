@@ -1,13 +1,15 @@
 import { Request, Response } from 'express'
+import { container } from 'tsyringe'
 
 import { ListSpecificationsUseCase } from './ListSpecificationsUseCase'
 
 export class ListSpecificationsController {
-  constructor(private listSpecificationUseCase: ListSpecificationsUseCase) {}
+  async handle(request: Request, response: Response): Promise<Response> {
+    const listSpecificationUseCase = container.resolve(
+      ListSpecificationsUseCase
+    )
+    const specifications = await listSpecificationUseCase.execute()
 
-  handle(request: Request, response: Response): Response {
-    const allSpecifications = this.listSpecificationUseCase.execute()
-
-    return response.json(allSpecifications)
+    return response.json(specifications)
   }
 }

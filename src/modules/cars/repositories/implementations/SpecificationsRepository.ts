@@ -1,41 +1,30 @@
-import { ISpecificationRepository, ICreateSpecificationDTO } from '..'
+import { getRepository, Repository } from 'typeorm'
 
 import { Specification } from '../../entities'
 
+import { ISpecificationRepository, ICreateSpecificationDTO } from '..'
+
 export class SpecificationRepository implements ISpecificationRepository {
-  private static INSTANCE: SpecificationRepository
+  constructor(
+    private repository: Repository<Specification> = getRepository(Specification)
+  ) {}
 
-  private constructor(private specifications: Specification[] = []) {}
-
-  public static getInstance(): SpecificationRepository {
-    if (!SpecificationRepository.INSTANCE) {
-      SpecificationRepository.INSTANCE = new SpecificationRepository()
-    }
-    return SpecificationRepository.INSTANCE
-  }
-
-  list(): Specification[] {
-    return this.specifications
-  }
-
-  create({ name, description }: ICreateSpecificationDTO): void {
-    const specification = new Specification()
-    // pega todas as informações que foram passadas para dentro dele e vai setar para dentro do obj **specification**
-    Object.assign(specification, {
+  async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
+    const specification = this.repository.create({
       name,
       description,
-      created_at: new Date(),
     })
-
-    this.specifications.push(specification)
+    await this.repository.save(specification)
   }
 
-  checkIfSpecificationNameIsUnique(name: string): boolean {
-    const isThereSpecification = this.specifications.some(
-      (specification) =>
-        specification.name.trim().toUpperCase() === name.trim().toUpperCase()
-    )
+  async list(): Promise<Specification[]> {
+    return this.repository.find()
+  }
 
-    return isThereSpecification
+  async checkIfSpecificationNameIsUnique(name: string): Promise<boolean> {
+    const specificationNameAlreadyExists = await this.repository.findOne({
+      name,
+    })
+    return !!specificationNameAlreadyExists
   }
 }

@@ -6,7 +6,7 @@ export interface ICreateSpecificationDTO {
 }
 
 export interface ISpecificationRepository {
-  create({ name, description }: ICreateSpecificationDTO): void
-  list(): Specification[]
-  checkIfSpecificationNameIsUnique(name: string): boolean
+  list(): Promise<Specification[]>
+  checkIfSpecificationNameIsUnique(name: string): Promise<boolean>
+  create({ name, description }: ICreateSpecificationDTO): Promise<void>
 }
