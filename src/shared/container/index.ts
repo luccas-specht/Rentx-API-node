@@ -1,6 +1,10 @@
 import { container } from 'tsyringe'
 
 import {
+  IUsersRepository,
+  UsersRepository,
+} from '../../modules/accounts/repositories'
+import {
   CategoriesRepository,
   ICategoriesRepositoy,
   ISpecificationRepository,
@@ -15,4 +19,9 @@ container.registerSingleton<ICategoriesRepositoy>(
 container.registerSingleton<ISpecificationRepository>(
   'SpecificationRepository',
   SpecificationRepository
+)
+
+container.registerSingleton<IUsersRepository>(
+  'UsersRepository',
+  UsersRepository
 )
