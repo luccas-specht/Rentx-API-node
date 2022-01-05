@@ -1,15 +1,33 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import swaggerUi from 'swagger-ui-express'
 
 import './database'
 import './shared/container'
+import { AppError } from './errors'
 import { routers } from './routers'
 import swaggerFile from './swagger.json'
 
 const app = express()
 
-app.listen(3333, () => console.log('Server started in port: 3333 🚀'))
-
 app.use(express.json())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use(routers)
+app.use(
+  (
+    error: Error,
+    request: Request,
+    response: Response,
+    nextFunction: NextFunction
+  ) => {
+    if (error instanceof AppError) {
+      return response.status(error.statusCode).json({
+        message: error.message,
+      })
+    }
+    return response.status(500).json({
+      status: 'error',
+      message: `Internal server error - ${error.message}`,
+    })
+  }
+)
+app.listen(3333, () => console.log('Server started in port: 3333 🚀'))
