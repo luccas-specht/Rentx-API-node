@@ -1,6 +1,6 @@
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
-import { inject } from 'tsyringe'
+import { inject, injectable } from 'tsyringe'
 
 import { IUsersRepository } from '../../repositories'
 
@@ -16,7 +16,7 @@ interface IResponse {
   }
   token: string
 }
-
+@injectable()
 export class AuthenticatedUserUseCase {
   constructor(
     @inject('UsersRepository')
