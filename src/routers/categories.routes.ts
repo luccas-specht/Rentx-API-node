@@ -1,27 +1,25 @@
 import { Router } from 'express'
+import multer from 'multer'
 
-import { CategoriesRepository } from '../repositories'
-import { CreateCategoryService, ListCategoriesServices } from '../services'
+import { uploadConfig } from '../config'
+import { ensureAuthenticated } from '../middlewares'
+import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController'
+import { ImportCategoryController } from '../modules/cars/useCases/importCategory/ImportCategoryController'
+import { ListCategoriesController } from '../modules/cars/useCases/listCategories/ListCategoriesController'
 
 export const categoriesRoutes = Router()
 
-const categoriesRepository = new CategoriesRepository()
+const uploadCategories = multer(uploadConfig.upload('./tmp'))
 
-categoriesRoutes.post('/', (request, response) => {
-  const {
-    body: { name, description },
-  } = request
+const listCategoriesController = new ListCategoriesController()
+const createCategoryController = new CreateCategoryController()
+const importCategoryController = new ImportCategoryController()
 
-  const createCategoryService = new CreateCategoryService(categoriesRepository)
-  createCategoryService.execute({ name, description })
-
-  // sempre que eniviarmos um status sem um .json() devemos chamar o metodo .send() para enviar essa resposta com o status escolhido.
-  return response.status(201).send()
-})
-
-categoriesRoutes.get('/', (request, response) => {
-  const listCategoriesService = new ListCategoriesServices(categoriesRepository)
-  const categories = listCategoriesService.execute()
-
-  return response.json(categories)
-})
+categoriesRoutes.use(ensureAuthenticated)
+categoriesRoutes.get('/', listCategoriesController.handle)
+categoriesRoutes.post('/', createCategoryController.handle)
+categoriesRoutes.post(
+  '/import',
+  uploadCategories.single('file'),
+  importCategoryController.handle
+)
