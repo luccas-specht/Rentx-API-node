@@ -1,0 +1,1 @@
+export { uploadConfig } from './upload'

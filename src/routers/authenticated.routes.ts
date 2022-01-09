@@ -6,4 +6,4 @@ const authenticatedUserController = new AuthenticatedUserController()
 
 export const authenticatedRoutes = Router()
 
-authenticatedRoutes.post('/sessions', authenticatedUserController.handle)
+authenticatedRoutes.post('/', authenticatedUserController.handle)
