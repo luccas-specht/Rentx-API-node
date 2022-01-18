@@ -1,27 +1,27 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add express-async-errors
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add jest @types/jest -D
 
 PATH: 
-  C:\Users\lucca\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\lucca\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Users\lucca\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\OpenJDK\openjdk-11.0.13_8\bin;C:\Program Files (x86)\Yarn\bin;%ANDROID_HOME%\emulator;%ANDROID_HOME%\tools;%ANDROID_HOME%\tools\bin;%ANDROID_HOME%\platform-tools;C:\Users\lucca\AppData\Local\Yarn\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\lucca\AppData\Local\Microsoft\WindowsApps;C:\Users\lucca\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\lucca\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\lucca\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Users\lucca\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\lucca\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Users\lucca\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\lucca\AppData\Local\Microsoft\WindowsApps;C:\Users\lucca\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\lucca\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.17
 
 Node version: 
-  14.17.6
+  16.13.1
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\lucca\OneDrive\Área de Trabalho\project-node-ignite-chapters-2-and-3\node_modules\.bin\ts-node-dev'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\lucca\Desktop\Rentx-API-node\node_modules\.bin\ts-node-dev'
 
 npm manifest: 
   {
-    "name": "project-node-ignite-chapters-2-and-3",
+    "name": "rentx-api-node",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "https://github.com/luccas-specht/project-node-ignite-chapter-2.git",
+    "repository": "https://github.com/luccas-specht/Rentx-API-node",
     "author": "Luccas Specht <luccas.specht70@gmail.com>",
     "license": "MIT",
     "scripts": {

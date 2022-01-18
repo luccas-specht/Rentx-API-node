@@ -1,8 +1,8 @@
 {
-  "name": "project-node-ignite-chapters-2-and-3",
+  "name": "rentx-api-node",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/luccas-specht/project-node-ignite-chapter-2.git",
+  "repository": "https://github.com/luccas-specht/Rentx-API-node",
   "author": "Luccas Specht <luccas.specht70@gmail.com>",
   "license": "MIT",
   "scripts": {
