@@ -1,0 +1,1 @@
+export { CategoriesRepositoryInMemory } from './CategoriesRepositoryInMemory'

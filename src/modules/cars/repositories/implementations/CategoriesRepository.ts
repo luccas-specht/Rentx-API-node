@@ -9,6 +9,10 @@ export class CategoriesRepository implements ICategoriesRepositoy {
     private repository: Repository<Category> = getRepository(Category)
   ) {}
 
+  async findByName(name: string): Promise<Category | undefined> {
+    return this.repository.findOne({ name })
+  }
+
   async create({ name, description }: ICreateCategoryDTO): Promise<void> {
     const category = this.repository.create({
       name,
