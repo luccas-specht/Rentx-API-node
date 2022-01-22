@@ -1,11 +1,10 @@
+import { uploadConfig } from '@config/upload'
+import { ensureAuthenticated } from '@middlewares/ensureAuthenticated'
+import { CreateCategoryController } from '@modules/cars/useCases/createCategory/CreateCategoryController'
+import { ImportCategoryController } from '@modules/cars/useCases/importCategory/ImportCategoryController'
+import { ListCategoriesController } from '@modules/cars/useCases/listCategories/ListCategoriesController'
 import { Router } from 'express'
 import multer from 'multer'
-
-import { uploadConfig } from '../config'
-import { ensureAuthenticated } from '../middlewares'
-import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController'
-import { ImportCategoryController } from '../modules/cars/useCases/importCategory/ImportCategoryController'
-import { ListCategoriesController } from '../modules/cars/useCases/listCategories/ListCategoriesController'
 
 export const categoriesRoutes = Router()
 

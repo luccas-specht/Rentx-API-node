@@ -1,10 +1,11 @@
+import { AppError } from '@errors/AppError'
+import { routers } from '@routers/index'
 import express, { NextFunction, Request, Response } from 'express'
 import swaggerUi from 'swagger-ui-express'
 
 import './database'
-import './shared/container'
-import { AppError } from './errors'
-import { routers } from './routers'
+import '@shared/container'
+
 import swaggerFile from './swagger.json'
 
 const app = express()

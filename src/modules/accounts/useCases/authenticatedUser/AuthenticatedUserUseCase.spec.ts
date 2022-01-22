@@ -1,9 +1,10 @@
 import 'reflect-metadata'
 
+import { AppError } from '@errors/AppError'
+import { ICreateUserDTO } from '@modules/accounts/dtos'
+import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRepositoryInMemory'
+
 import { AuthenticatedUserUseCase } from '.'
-import { AppError } from '../../../../errors'
-import { ICreateUserDTO } from '../../dtos'
-import { UsersRepositoryInMemory } from '../../repositories/in-memory/UsersRepositoryInMemory'
 import { CreateUserUseCase } from '../createUser'
 
 let createUserUseCase: CreateUserUseCase
@@ -39,14 +40,14 @@ describe('Authenticated user', () => {
 
   it('should not be able to authenticate an nonexistent user', () => {
     expect(async () => {
-      const userWhoDoNotExists = {
+      const userWhoDoesNotExists = {
         email: 'lukinhasppt@nonexistent.com.br',
         password: '1D0n7Ex1$8',
       }
 
       await authenticatedUserUseCase.execute({
-        email: userWhoDoNotExists.email,
-        password: userWhoDoNotExists.password,
+        email: userWhoDoesNotExists.email,
+        password: userWhoDoesNotExists.password,
       })
     }).rejects.toBeInstanceOf(AppError)
   })

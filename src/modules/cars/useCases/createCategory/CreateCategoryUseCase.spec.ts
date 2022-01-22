@@ -1,5 +1,6 @@
-import { AppError } from '../../../../errors'
-import { CategoriesRepositoryInMemory } from '../../repositories/in-memory'
+import { AppError } from '@errors/AppError'
+import { CategoriesRepositoryInMemory } from '@modules/cars/repositories/in-memory'
+
 import { CreateCategoryUseCase } from './CreateCategoryUseCase'
 
 // agroup tests
