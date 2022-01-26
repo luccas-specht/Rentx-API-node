@@ -1,5 +1,5 @@
-import { AppError } from '@errors/AppError'
-import { UsersRepository } from '@modules/accounts/repositories'
+import { AppError } from '@shared/errors/AppError'
+import { UsersRepository } from '@modules/accounts/infra'
 import { NextFunction, Request, Response } from 'express'
 import { verify } from 'jsonwebtoken'
 
@@ -12,15 +12,10 @@ export async function ensureAuthenticated(
   response: Response,
   nextFunction: NextFunction
 ): Promise<void> {
-  /*  Pegar o token pelo header
-   o JWT(JsonWebToken) funciona pelo: Bearer !haushuahsuahsuausha! -> token */
-
   const authHeader = request.headers.authorization
 
   if (!authHeader) throw new AppError('Token missing', 401)
-  /* formato do token
-      Bearer aushauhsuahsuhaush
-  */
+
   const [, token] = authHeader.split(' ')
 
   try {

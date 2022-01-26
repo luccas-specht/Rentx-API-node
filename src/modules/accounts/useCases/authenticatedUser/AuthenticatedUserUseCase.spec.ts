@@ -1,8 +1,9 @@
 import 'reflect-metadata'
 
-import { AppError } from '@errors/AppError'
 import { ICreateUserDTO } from '@modules/accounts/dtos'
-import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRepositoryInMemory'
+import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory'
+
+import { AppError } from '@shared/errors/AppError'
 
 import { AuthenticatedUserUseCase } from '.'
 import { CreateUserUseCase } from '../createUser'

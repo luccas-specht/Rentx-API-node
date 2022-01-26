@@ -1,4 +1,4 @@
-import { Category } from '@modules/cars/entities'
+import { Category } from '@modules/cars/infra'
 import { ICategoriesRepositoy } from '@modules/cars/repositories'
 import { inject, injectable } from 'tsyringe'
 

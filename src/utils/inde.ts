@@ -1,1 +1,0 @@
-export { deleteFile } from './file'

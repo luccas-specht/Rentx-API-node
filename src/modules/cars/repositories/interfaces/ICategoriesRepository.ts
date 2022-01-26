@@ -1,7 +1,5 @@
-import { Category } from '@modules/cars/entities'
+import { Category } from '@modules/cars/infra'
 
-// DTO -> Data trasnfer Object
-// Conceito de criar um obj que é responsavel por fazer a transferencia de dados entre uma camada e outra
 export interface ICreateCategoryDTO {
   name: string
   description: string

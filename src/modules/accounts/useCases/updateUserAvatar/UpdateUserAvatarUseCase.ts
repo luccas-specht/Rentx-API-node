@@ -1,4 +1,4 @@
-import { UsersRepository } from '@modules/accounts/repositories'
+import { UsersRepository } from '@modules/accounts/infra'
 import { deleteFile } from '@utils/file'
 import { inject, injectable } from 'tsyringe'
 

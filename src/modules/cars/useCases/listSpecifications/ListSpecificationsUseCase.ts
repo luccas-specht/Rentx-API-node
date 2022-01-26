@@ -1,4 +1,4 @@
-import { Specification } from '@modules/cars/entities'
+import { Specification } from '@modules/cars/infra'
 import { ISpecificationRepository } from '@modules/cars/repositories'
 import { inject, injectable } from 'tsyringe'
 

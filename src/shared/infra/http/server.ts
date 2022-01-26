@@ -1,9 +1,10 @@
-import { AppError } from '@errors/AppError'
-import { routers } from '@routers/index'
 import express, { NextFunction, Request, Response } from 'express'
 import swaggerUi from 'swagger-ui-express'
 
-import './database'
+import { AppError } from '@shared/errors/AppError'
+import { routers } from '@shared/infra'
+
+import '@shared/infra/typeormDatabase'
 import '@shared/container'
 
 import swaggerFile from './swagger.json'

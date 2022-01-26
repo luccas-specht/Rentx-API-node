@@ -1,9 +1,10 @@
 import { uploadConfig } from '@config/upload'
-import { ensureAuthenticated } from '@middlewares/ensureAuthenticated'
 import { CreateUserController } from '@modules/accounts/useCases/createUser'
 import { UpdateUserAvatarController } from '@modules/accounts/useCases/updateUserAvatar'
 import { Router } from 'express'
 import multer from 'multer'
+
+import { ensureAuthenticated } from '@shared/infra/http/middlewares'
 
 export const usersRoutes = Router()
 

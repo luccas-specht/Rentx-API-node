@@ -1,4 +1,4 @@
-import { Category } from '@modules/cars/entities'
+import { Category } from '@modules/cars/infra'
 import { ICreateCategoryDTO } from '@modules/cars/repositories/interfaces'
 
 import { ICategoriesRepositoy } from '..'
