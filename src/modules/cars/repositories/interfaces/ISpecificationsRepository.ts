@@ -1,9 +1,5 @@
+import { ICreateSpecificationDTO } from '@modules/cars/dtos'
 import { Specification } from '@modules/cars/infra'
-
-export interface ICreateSpecificationDTO {
-  name: string
-  description: string
-}
 
 export interface ISpecificationRepository {
   list(): Promise<Specification[]>

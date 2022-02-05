@@ -1,5 +1,5 @@
 import { Category } from '@modules/cars/infra'
-import { ICreateCategoryDTO } from '@modules/cars/repositories/interfaces'
+import { ICreateCategoryDTO } from '@modules/cars/dtos'
 
 import { ICategoriesRepositoy } from '..'
 
