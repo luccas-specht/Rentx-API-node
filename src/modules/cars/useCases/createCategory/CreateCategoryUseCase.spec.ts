@@ -1,22 +1,8 @@
-import { AppError } from '../../../../errors'
-import { CategoriesRepositoryInMemory } from '../../repositories/in-memory'
+import { CategoriesRepositoryInMemory } from '@modules/cars/repositories/in-memory'
+
+import { AppError } from '@shared/errors/AppError'
+
 import { CreateCategoryUseCase } from './CreateCategoryUseCase'
-
-// agroup tests
-/* describe('Examples', () => {
-  // tests always are inside it()
-  it('Espero que a soma de 2 + 2 seja 4', () => {
-    const sum = 2 + 2
-    const result = 4
-    expect(sum).toBe(result)
-  })
-  it('Espero que 2 + 2 !== 5', () => {
-    const sum = 2 + 2
-    const result = 5
-
-    expect(sum).not.toBe(result)
-  })
-}) */
 
 let createCategoryUseCase: CreateCategoryUseCase
 let categoriesRepositoryInMemory: CategoriesRepositoryInMemory

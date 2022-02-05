@@ -1,8 +1,7 @@
+import { ICreateUserDTO } from '@modules/accounts/dtos'
+import { Users } from '@modules/accounts/infra'
+import { IUsersRepository } from '@modules/accounts/repositories/interfaces'
 import { getRepository, Repository } from 'typeorm'
-
-import { ICreateUserDTO } from '../../dtos'
-import { Users } from '../../entities'
-import { IUsersRepository } from '../interfaces/IUsersRepository'
 
 export class UsersRepository implements IUsersRepository {
   constructor(private repository: Repository<Users> = getRepository(Users)) {}

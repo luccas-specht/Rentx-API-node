@@ -1,16 +1,20 @@
+import 'reflect-metadata'
+
+import '@shared/infra/typeormDatabase'
+import '@shared/container'
+
 import express, { NextFunction, Request, Response } from 'express'
-import swaggerUi from 'swagger-ui-express'
+/* import swaggerUi from 'swagger-ui-express' */
 
-import './database'
-import './shared/container'
-import { AppError } from './errors'
-import { routers } from './routers'
-import swaggerFile from './swagger.json'
+import { AppError } from '@shared/errors/AppError'
+import { routers } from '@shared/infra/http/routers'
 
-const app = express()
+/* import swaggerFile from './swagger.json' */
+
+export const app = express()
 
 app.use(express.json())
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+/* app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile)) */
 app.use(routers)
 app.use(
   (
@@ -30,4 +34,3 @@ app.use(
     })
   }
 )
-app.listen(3333, () => console.log('Server started in port: 3333 🚀'))

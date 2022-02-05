@@ -1,8 +1,7 @@
+import { ICreateUserDTO } from '@modules/accounts/dtos'
+import { IUsersRepository } from '@modules/accounts/repositories/interfaces'
 import { hash } from 'bcryptjs'
 import { inject, injectable } from 'tsyringe'
-
-import { ICreateUserDTO } from '../../dtos'
-import { IUsersRepository } from '../../repositories/interfaces'
 
 @injectable()
 export class CreateUserUseCase {

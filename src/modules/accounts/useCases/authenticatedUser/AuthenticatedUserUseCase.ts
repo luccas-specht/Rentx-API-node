@@ -1,9 +1,9 @@
+import { IUsersRepository } from '@modules/accounts/repositories'
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
 
-import { AppError } from '../../../../errors'
-import { IUsersRepository } from '../../repositories'
+import { AppError } from '@shared/errors/AppError'
 
 interface IRequest {
   email: string
