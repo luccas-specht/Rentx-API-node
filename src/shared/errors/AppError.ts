@@ -1,5 +1,3 @@
-/* Classe responsável pela coxtomuzação de errors */
-
 export class AppError {
   public readonly message: string
   public readonly statusCode: number

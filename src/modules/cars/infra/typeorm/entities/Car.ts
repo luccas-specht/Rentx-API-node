@@ -1,7 +1,5 @@
-/* import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm'
-import { v4 as uuidV4 } from 'uuid' */
+import { v4 as uuidV4 } from 'uuid'
 
-/* @Entity('cars') */
 export class Car {
   id: string
   name: string
@@ -13,7 +11,10 @@ export class Car {
   created_at: Date
   category_id: string
   license_plate: string
-  /* constructor() {
+
+  constructor() {
     if (!this.id) this.id = uuidV4()
-  } */
+    this.available = true
+    this.created_at = new Date()
+  }
 }
