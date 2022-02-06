@@ -21,13 +21,6 @@ export class CreateCarUseCase {
     private carsRepository: ICarsRepository
   ) {}
 
-  private async checkIfCarAlreadyExists(license_plate: string): Promise<void> {
-    const carAlreadyExists = await this.carsRepository.findByLicensePlate(
-      license_plate
-    )
-    if (carAlreadyExists) throw new AppError('Car already exists')
-  }
-
   async execute({
     name,
     brand,
@@ -37,7 +30,11 @@ export class CreateCarUseCase {
     fine_amount,
     license_plate,
   }: IRequest): Promise<Car> {
-    await this.checkIfCarAlreadyExists(license_plate)
+    const carAlreadyExists = await this.carsRepository.findByLicensePlate(
+      license_plate
+    )
+    if (carAlreadyExists) throw new AppError('Car already exists')
+
     const car = await this.carsRepository.create({
       name,
       brand,

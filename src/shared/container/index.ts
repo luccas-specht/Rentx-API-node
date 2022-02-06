@@ -3,8 +3,10 @@ import { IUsersRepository } from '@modules/accounts/repositories'
 import {
   CategoriesRepository,
   SpecificationRepository,
-} from '@modules/cars/infra'
+} from '@modules/cars/infra/typeorm/repositories'
+import { CarsRepository } from '@modules/cars/infra/typeorm/repositories/CarsReppository'
 import {
+  ICarsRepository,
   ICategoriesRepositoy,
   ISpecificationRepository,
 } from '@modules/cars/repositories'
@@ -24,3 +26,5 @@ container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository
 )
+
+container.registerSingleton<ICarsRepository>('CarsRepository', CarsRepository)

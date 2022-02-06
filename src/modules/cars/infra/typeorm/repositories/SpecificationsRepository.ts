@@ -18,7 +18,8 @@ export class SpecificationRepository implements ISpecificationRepository {
   }
 
   async list(): Promise<Specification[]> {
-    return this.repository.find()
+    const a = this.repository.find()
+    return a
   }
 
   async checkIfSpecificationNameIsUnique(name: string): Promise<boolean> {
