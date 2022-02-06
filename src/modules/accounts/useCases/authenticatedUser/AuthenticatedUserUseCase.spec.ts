@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+/* import 'reflect-metadata' */
 
 import { ICreateUserDTO } from '@modules/accounts/dtos'
 import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory'

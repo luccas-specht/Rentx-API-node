@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 
-import '@shared/infra/typeormDatabase'
+import '@shared/infra/typeorm'
 import '@shared/container'
 
 import express, { NextFunction, Request, Response } from 'express'

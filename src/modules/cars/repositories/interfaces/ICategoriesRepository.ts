@@ -1,9 +1,5 @@
+import { ICreateCategoryDTO } from '@modules/cars/dtos'
 import { Category } from '@modules/cars/infra'
-
-export interface ICreateCategoryDTO {
-  name: string
-  description: string
-}
 
 export interface ICategoriesRepositoy {
   list(): Promise<Category[]>

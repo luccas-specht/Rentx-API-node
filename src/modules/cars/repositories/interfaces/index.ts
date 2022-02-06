@@ -1,8 +1,3 @@
-export {
-  ICategoriesRepositoy,
-  ICreateCategoryDTO,
-} from './ICategoriesRepository'
-export {
-  ISpecificationRepository,
-  ICreateSpecificationDTO,
-} from './ISpecificationsRepository'
+export { ICarsRepository } from './ICarsRepository'
+export { ICategoriesRepositoy } from './ICategoriesRepository'
+export { ISpecificationRepository } from './ISpecificationsRepository'

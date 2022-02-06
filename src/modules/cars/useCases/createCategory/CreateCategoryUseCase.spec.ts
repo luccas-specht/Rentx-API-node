@@ -8,6 +8,11 @@ let createCategoryUseCase: CreateCategoryUseCase
 let categoriesRepositoryInMemory: CategoriesRepositoryInMemory
 
 describe('Create Category', () => {
+  const category = {
+    name: 'HUV - Honda Civic',
+    description: 'Honda is a tega',
+  }
+
   beforeEach(() => {
     categoriesRepositoryInMemory = new CategoriesRepositoryInMemory()
     createCategoryUseCase = new CreateCategoryUseCase(
@@ -16,11 +21,6 @@ describe('Create Category', () => {
   })
 
   it('should be able to create a new category', async () => {
-    const category = {
-      name: 'HUV - Honda Civic',
-      description: 'Honda is a tega',
-    }
-
     await createCategoryUseCase.execute({
       name: category.name,
       description: category.description,
@@ -35,11 +35,6 @@ describe('Create Category', () => {
 
   it('should not be able to create a new category with same name', () => {
     expect(async () => {
-      const category = {
-        name: 'HUV - Honda Civic',
-        description: 'Honda is a tega',
-      }
-
       await createCategoryUseCase.execute({
         name: category.name,
         description: category.description,
