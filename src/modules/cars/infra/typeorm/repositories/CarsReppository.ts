@@ -1,13 +1,11 @@
 import { ICreateCarDTO } from '@modules/cars/dtos'
 import { ICarsRepository } from '@modules/cars/repositories'
-import { getRepository, Repository } from 'typeorm'
+import { getRepository } from 'typeorm'
 
 import { Car } from '../entities'
 
 export class CarsRepository implements ICarsRepository {
-  constructor(
-    private readonly repository: Repository<Car> = getRepository(Car)
-  ) {}
+  constructor(private readonly repository = getRepository(Car)) {}
 
   async create({
     brand,
@@ -32,7 +30,6 @@ export class CarsRepository implements ICarsRepository {
   }
 
   async findByLicensePlate(license_plate: string): Promise<Car> {
-    const a = this.repository.findOne({ license_plate })
-    return a
+    return this.repository.findOne({ license_plate })
   }
 }

@@ -4,7 +4,9 @@ import { IUsersRepository } from '@modules/accounts/repositories/interfaces'
 import { getRepository, Repository } from 'typeorm'
 
 export class UsersRepository implements IUsersRepository {
-  constructor(private repository: Repository<Users> = getRepository(Users)) {}
+  constructor(
+    private readonly repository: Repository<Users> = getRepository(Users)
+  ) {}
 
   async create({
     name,
