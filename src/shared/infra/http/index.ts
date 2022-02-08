@@ -1,2 +1,2 @@
 export { routers } from './routers'
-export { ensureAuthenticated } from './middlewares'
+export * from './middlewares'
