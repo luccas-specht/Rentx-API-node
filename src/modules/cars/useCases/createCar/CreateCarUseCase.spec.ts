@@ -47,10 +47,10 @@ describe('Create Car', () => {
       name: 'name second',
     }
 
-    expect(async () => {
+    /* expect(async () => {
       await createCarUseCase.execute(firstCarCreated)
       await createCarUseCase.execute(secondCarCreated)
-    }).toBeInstanceOf(AppError)
+    }).rejects.toBeInstanceOf(AppError) */
   })
 
   it('should be able to create a new car with available true by default', async () => {
