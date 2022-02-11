@@ -1,3 +1,3 @@
-export { CarsRepository } from './CarsReppository'
+export { CarsRepository } from './CarsRepository'
 export { CategoriesRepository } from './CategoriesRepository'
 export { SpecificationRepository } from './SpecificationsRepository'

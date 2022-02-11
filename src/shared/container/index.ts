@@ -4,7 +4,7 @@ import {
   CategoriesRepository,
   SpecificationRepository,
 } from '@modules/cars/infra/typeorm/repositories'
-import { CarsRepository } from '@modules/cars/infra/typeorm/repositories/CarsReppository'
+import { CarsRepository } from '@modules/cars/infra/typeorm/repositories/CarsRepository'
 import {
   ICarsRepository,
   ICategoriesRepositoy,
