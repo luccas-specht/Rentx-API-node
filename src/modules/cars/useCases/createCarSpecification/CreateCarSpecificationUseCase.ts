@@ -26,7 +26,5 @@ export class CreateCarSpecificationUseCase {
     car.specifications = specifications
 
     await this.carsRepository.create(car)
-
-    console.log(car)
   }
 }

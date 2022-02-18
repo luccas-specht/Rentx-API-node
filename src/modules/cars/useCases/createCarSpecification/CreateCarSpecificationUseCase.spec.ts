@@ -29,7 +29,11 @@ describe('Create Car Specification', () => {
   })
 
   it('should be able to add a new specification to the car ', async () => {
-    const specifications_id = ['4311']
+    const { id } = await specificationsRepositoryInMemory.create({
+      name: 'New Specification',
+      description: 'lorem ipsum',
+    })
+
     const { id: car_id } = await carsRepositoryInMemory.create({
       brand: 'brand',
       category_id: 'cate',
@@ -40,6 +44,9 @@ describe('Create Car Specification', () => {
       name: 'bmw',
     })
 
-    await createCarSpecificationUseCase.execute({ car_id, specifications_id })
+    await createCarSpecificationUseCase.execute({
+      car_id,
+      specifications_id: [id],
+    })
   })
 })
