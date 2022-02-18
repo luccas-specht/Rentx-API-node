@@ -15,6 +15,7 @@ export class CarsRepository implements ICarsRepository {
     license_plate,
     name,
     daily_rate,
+    specifications,
   }: ICreateCarDTO): Promise<Car> {
     const car = this.repository.create({
       brand,
@@ -24,6 +25,7 @@ export class CarsRepository implements ICarsRepository {
       license_plate,
       name,
       daily_rate,
+      specifications,
     })
     await this.repository.save(car)
     return car
@@ -53,7 +55,7 @@ export class CarsRepository implements ICarsRepository {
     return cars
   }
 
-  findById(id: string): Promise<Car> {
+  async findById(id: string): Promise<Car> {
     return this.repository.findOne(id)
   }
 }

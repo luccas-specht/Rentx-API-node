@@ -1,3 +1,5 @@
+import { Specification } from '../infra'
+
 export interface ICreateCarDTO {
   name: string
   brand: string
@@ -6,4 +8,5 @@ export interface ICreateCarDTO {
   license_plate: string
   fine_amount: number
   category_id: string
+  specifications?: Specification[]
 }
