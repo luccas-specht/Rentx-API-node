@@ -1,6 +1,7 @@
 import { Specification } from '../infra'
 
 export interface ICreateCarDTO {
+  id?: string
   name: string
   brand: string
   description: string

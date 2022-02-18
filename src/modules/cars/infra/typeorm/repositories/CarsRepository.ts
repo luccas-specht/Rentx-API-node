@@ -8,6 +8,7 @@ export class CarsRepository implements ICarsRepository {
   constructor(private readonly repository = getRepository(Car)) {}
 
   async create({
+    id,
     brand,
     category_id,
     description,
@@ -26,6 +27,7 @@ export class CarsRepository implements ICarsRepository {
       name,
       daily_rate,
       specifications,
+      id,
     })
     await this.repository.save(car)
     return car

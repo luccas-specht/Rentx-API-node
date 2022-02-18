@@ -11,6 +11,7 @@ export class CarsRepositoryInMemory implements ICarsRepository {
   }
 
   async create({
+    id,
     brand,
     category_id,
     daily_rate,
@@ -29,6 +30,7 @@ export class CarsRepositoryInMemory implements ICarsRepository {
       fine_amount,
       license_plate,
       name,
+      id,
     })
 
     this.cars.push(car)
