@@ -1,0 +1,1 @@
+export { IRentalsRepository } from './IRentalsRepository'
