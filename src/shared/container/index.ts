@@ -12,10 +12,10 @@ import {
   ISpecificationRepository,
 } from '@modules/cars/repositories'
 import { ICarsImagesRepository } from '@modules/cars/repositories/interfaces/ICarsImage'
+import { RentalsRepository } from '@modules/rentals/infra/typeorm/repositories/RentalsRepository'
+import { IRentalsRepository } from '@modules/rentals/repositories'
 import { container } from 'tsyringe'
-
-import { DayJsDateProvider } from './providers/DateProvider/implementations'
-import { IDateProvider } from './providers/DateProvider/interfaces'
+import '@shared/container/providers'
 
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
@@ -39,7 +39,7 @@ container.registerSingleton<ICarsImagesRepository>(
   CarsImagesRepository
 )
 
-container.registerSingleton<IDateProvider>(
-  'DayJsDateProvider',
-  DayJsDateProvider
+container.registerSingleton<IRentalsRepository>(
+  'RentalsRepository',
+  RentalsRepository
 )

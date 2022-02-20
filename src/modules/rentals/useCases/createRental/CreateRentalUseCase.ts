@@ -14,8 +14,8 @@ interface IRequest {
 @injectable()
 export class CreateRentalUseCase {
   constructor(
-    @inject('DateProvider')
-    private dateProvider: IDateProvider,
+    @inject('DayJsDateProvider')
+    private dayJsDateProvider: IDateProvider,
     @inject('RentalsRepository')
     private rentalsRepository: IRentalsRepository
   ) {}
@@ -39,9 +39,9 @@ export class CreateRentalUseCase {
     if (rentalOpenToUser)
       throw new AppError('there is a rental in progress for user!')
 
-    const dateNow = this.dateProvider.dateNow()
+    const dateNow = this.dayJsDateProvider.dateNow()
 
-    const compare = this.dateProvider.compareInHours(
+    const compare = this.dayJsDateProvider.compareInHours(
       dateNow,
       expected_return_date
     )

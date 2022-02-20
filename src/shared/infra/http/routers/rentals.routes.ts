@@ -3,8 +3,8 @@ import { Router } from 'express'
 
 import { ensureAuthenticated } from '..'
 
-export const rentalRoutes = Router()
+export const rentalsRoutes = Router()
 
 const createRentalController = new CreateRentalController()
 
-rentalRoutes.post('/', ensureAuthenticated, createRentalController.handle)
+rentalsRoutes.post('/', ensureAuthenticated, createRentalController.handle)
