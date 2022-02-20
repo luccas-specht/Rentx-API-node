@@ -1,9 +1,9 @@
 import { Category } from '@modules/cars/infra'
 import { ICreateCategoryDTO } from '@modules/cars/dtos'
 
-import { ICategoriesRepositoy } from '..'
+import { ICategoriesRepository } from '..'
 
-export class CategoriesRepositoryInMemory implements ICategoriesRepositoy {
+export class CategoriesRepositoryInMemory implements ICategoriesRepository {
   categories: Category[] = []
 
   async list(): Promise<Category[]> {

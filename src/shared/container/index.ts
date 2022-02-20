@@ -8,13 +8,16 @@ import { CarsImagesRepository } from '@modules/cars/infra/typeorm/repositories/C
 import { CarsRepository } from '@modules/cars/infra/typeorm/repositories/CarsRepository'
 import {
   ICarsRepository,
-  ICategoriesRepositoy,
+  ICategoriesRepository,
   ISpecificationRepository,
 } from '@modules/cars/repositories'
 import { ICarsImagesRepository } from '@modules/cars/repositories/interfaces/ICarsImage'
 import { container } from 'tsyringe'
 
-container.registerSingleton<ICategoriesRepositoy>(
+import { DayJsDateProvider } from './providers/DateProvider/implementations'
+import { IDateProvider } from './providers/DateProvider/interfaces'
+
+container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
   CategoriesRepository
 )
@@ -31,7 +34,12 @@ container.registerSingleton<IUsersRepository>(
 
 container.registerSingleton<ICarsRepository>('CarsRepository', CarsRepository)
 
-container.register<ICarsImagesRepository>(
+container.registerSingleton<ICarsImagesRepository>(
   'CarsImagesRepository',
   CarsImagesRepository
+)
+
+container.registerSingleton<IDateProvider>(
+  'DayJsDateProvider',
+  DayJsDateProvider
 )
