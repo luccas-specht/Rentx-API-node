@@ -1,14 +1,13 @@
 import { ICarsRepository } from '@modules/cars/repositories'
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental'
 import { IRentalsRepository } from '@modules/rentals/repositories'
-import { inject } from 'tsyringe'
+import { inject, injectable } from 'tsyringe'
 
 import { IDateProvider } from '@shared/container/providers/DateProvider/interfaces'
 import { AppError } from '@shared/errors'
 
 interface IRequest {
   id: string
-  user_id: string
 }
 
 interface IValueDailies {
@@ -21,6 +20,7 @@ interface ITotalRentalDailies extends IValueDailies {
   carDailyRate: number
 }
 
+@injectable()
 export class DevolutionRentalUseCase {
   constructor(
     @inject('RentalsRepository')
@@ -31,10 +31,10 @@ export class DevolutionRentalUseCase {
     private dayJsDateProvider: IDateProvider
   ) {}
 
-  async execute({ id, user_id }: IRequest): Promise<Rental> {
+  async execute({ id }: IRequest): Promise<Rental> {
     const MINIMUM_DAILY = 1
     const rental = await this.rentalsRepository.findById(id)
-    const car = await this.carsRepository.findById(id)
+    const car = await this.carsRepository.findById(rental.car_id)
 
     if (!rental) throw new AppError('Rental does not exist')
 
